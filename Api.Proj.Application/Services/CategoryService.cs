@@ -44,8 +44,9 @@ namespace Api.Proj.Std.Application.Services
         {
             var category = await _categoryRepository.GetCategoryById(id);
 
-            if (category.Id == 0)
-                return null;
+            if (category == null)
+                return null; 
+
             return category;            
         }
 
@@ -59,6 +60,5 @@ namespace Api.Proj.Std.Application.Services
 
             return null; 
         }
-
     }
 }

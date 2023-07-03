@@ -28,7 +28,10 @@ namespace ApiProjStd.Controllers
 
             categories = await _categoryService.GetAll();
 
-            return Ok(categories);
+            if (categories is not null)
+                return Ok(categories);
+
+            return StatusCode(400, new ResultViewModel<string>(errors: "Categories not found."));
         }
 
         [HttpGet]
