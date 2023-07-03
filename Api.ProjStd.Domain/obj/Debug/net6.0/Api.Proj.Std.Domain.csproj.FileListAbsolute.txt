@@ -1,0 +1,12 @@
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\bin\Debug\net6.0\Api.Proj.Std.Domain.deps.json
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\bin\Debug\net6.0\Api.Proj.Std.Domain.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\bin\Debug\net6.0\Api.Proj.Std.Domain.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\Api.Proj.Std.Domain.csproj.AssemblyReference.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\Api.Proj.Std.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\Api.Proj.Std.Domain.AssemblyInfoInputs.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\Api.Proj.Std.Domain.AssemblyInfo.cs
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\Api.Proj.Std.Domain.csproj.CoreCompileInputs.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\Api.Proj.Std.Domain.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\refint\Api.Proj.Std.Domain.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\Api.Proj.Std.Domain.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.ProjStd.Domain\obj\Debug\net6.0\ref\Api.Proj.Std.Domain.dll

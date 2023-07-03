@@ -18,19 +18,23 @@ namespace Api.Prof.Std.Infra.Mappings
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
+                .HasColumnName("ID_CATEGORY")
                 .ValueGeneratedOnAdd()
                 .UseMySqlIdentityColumn();
 
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasColumnName("CATEGORY_NAME")
-                .IsRequired()
                 .HasColumnType("VARCHAR");
 
             builder.Property(x => x.RegisterDate)
                 .IsRequired()
                 .HasColumnName("DATE_REGISTER")
                 .HasColumnType("DATETIME");
+
+            //builder.HasMany(x => x.Products)
+            //    .WithOne(x => x.Category)
+            //    .HasForeignKey(x => x.Category);
 
         }
     }

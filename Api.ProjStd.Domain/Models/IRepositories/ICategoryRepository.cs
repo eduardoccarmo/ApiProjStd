@@ -12,5 +12,6 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
         Task<List<Category>> GetAllCategories();
         Task<Category> GetCategoryByName(string name);
         Task<Category> GetCategoryById(int id);
+        Task<Category> AddCategory(Category category);
     }
 }

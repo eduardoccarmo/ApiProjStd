@@ -18,6 +18,7 @@ namespace Api.Prof.Std.Infra.Mappings
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
+                .HasColumnName("ID_PROFILE")
                 .ValueGeneratedOnAdd()
                 .UseMySqlIdentityColumn();
 

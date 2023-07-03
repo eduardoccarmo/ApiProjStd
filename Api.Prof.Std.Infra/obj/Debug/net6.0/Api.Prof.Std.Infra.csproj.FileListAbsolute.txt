@@ -1,0 +1,17 @@
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\bin\Debug\net6.0\Api.Prof.Std.Infra.deps.json
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\bin\Debug\net6.0\Api.Prof.Std.Infra.runtimeconfig.json
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\bin\Debug\net6.0\Api.Prof.Std.Infra.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\bin\Debug\net6.0\Api.Prof.Std.Infra.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\bin\Debug\net6.0\Api.Proj.Std.Domain.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\bin\Debug\net6.0\Api.Proj.Std.Domain.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.csproj.AssemblyReference.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.AssemblyInfoInputs.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.AssemblyInfo.cs
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.csproj.CoreCompileInputs.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.csproj.CopyComplete
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\refint\Api.Prof.Std.Infra.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\Api.Prof.Std.Infra.genruntimeconfig.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Prof.Std.Infra\obj\Debug\net6.0\ref\Api.Prof.Std.Infra.dll

@@ -2,6 +2,8 @@
 using Api.Prof.Std.Infra.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using Api.Prof.Std.Infra.Context;
+using Api.Proj.Std.Application.Interface;
+using Api.Proj.Std.Application.Services;
 
 namespace Api.Proj.Std.IoC
 {
@@ -14,6 +16,7 @@ namespace Api.Proj.Std.IoC
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProfileRepository, ProfileRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             return services;
         }

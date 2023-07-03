@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Api.Proj.Std.Domain/1.0.0": {
+        "runtime": {
+          "Api.Proj.Std.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Api.Proj.Std.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

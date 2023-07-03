@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api.Proj.Std.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,12 @@ namespace Api.Proj.Std.Application.Interface
 {
     public interface ICategoryService
     {
+        public Task<Category> GetById(int id);
+
+        public Task<Category> GetByName(string name);
+
+        public Task<Category> AddCategory(Category category);
+
+        public Task<List<Category>> GetAll(); 
     }
 }

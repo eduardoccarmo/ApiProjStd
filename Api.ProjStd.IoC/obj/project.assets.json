@@ -47,10 +47,10 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/7.0.2": {
+      "Microsoft.EntityFrameworkCore.Relational/7.0.8": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.2",
+          "Microsoft.EntityFrameworkCore": "7.0.8",
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0"
         },
         "compile": {
@@ -298,6 +298,21 @@
           "bin/placeholder/Api.Prof.Std.Infra.dll": {}
         }
       },
+      "Api.Proj.Std.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Api.Prof.Std.Infra": "1.0.0",
+          "Api.Proj.Std.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.8"
+        },
+        "compile": {
+          "bin/placeholder/Api.Proj.Std.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Api.Proj.Std.Application.dll": {}
+        }
+      },
       "Api.Proj.Std.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -354,17 +369,17 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational/7.0.2": {
-      "sha512": "TbTGOdaGtjps3GP7rLWXEXzmP+EXhV8AwPE/ov0QYhs5i5vKZX5ZpVLMnco2MeMtiPgLyxE7DhQT8s1wlu190g==",
+    "Microsoft.EntityFrameworkCore.Relational/7.0.8": {
+      "sha512": "C9NYwZdtAd0Ov2jQz4vNplifA/zmvn7BN6k7HrxRdbK4pdg18mFDQAedkJX2hGngNEMwssapzlRhsUSV0Q34rA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/7.0.2",
+      "path": "microsoft.entityframeworkcore.relational/7.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/net6.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.7.0.8.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
@@ -736,6 +751,11 @@
       "path": "../Api.Prof.Std.Infra/Api.Prof.Std.Infra.csproj",
       "msbuildProject": "../Api.Prof.Std.Infra/Api.Prof.Std.Infra.csproj"
     },
+    "Api.Proj.Std.Application/1.0.0": {
+      "type": "project",
+      "path": "../Api.Proj.Application/Api.Proj.Std.Application.csproj",
+      "msbuildProject": "../Api.Proj.Application/Api.Proj.Std.Application.csproj"
+    },
     "Api.Proj.Std.Domain/1.0.0": {
       "type": "project",
       "path": "../Api.ProjStd.Domain/Api.Proj.Std.Domain.csproj",
@@ -745,6 +765,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Api.Prof.Std.Infra >= 1.0.0",
+      "Api.Proj.Std.Application >= 1.0.0",
       "Api.Proj.Std.Domain >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 7.0.0"
     ]
@@ -783,6 +804,9 @@
           "projectReferences": {
             "C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\ApiProj\\Api.Prof.Std.Infra\\Api.Prof.Std.Infra.csproj": {
               "projectPath": "C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\ApiProj\\Api.Prof.Std.Infra\\Api.Prof.Std.Infra.csproj"
+            },
+            "C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\ApiProj\\Api.Proj.Application\\Api.Proj.Std.Application.csproj": {
+              "projectPath": "C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\ApiProj\\Api.Proj.Application\\Api.Proj.Std.Application.csproj"
             },
             "C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\ApiProj\\Api.ProjStd.Domain\\Api.Proj.Std.Domain.csproj": {
               "projectPath": "C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\ApiProj\\Api.ProjStd.Domain\\Api.Proj.Std.Domain.csproj"

@@ -17,10 +17,10 @@ namespace Api.Proj.Std.Domain.Models
         #endregion
 
         #region Properties
-        public int Int { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Brand { get; set; }
-        public int Category { get; set; }
+        public Category Category { get; set; }
         public double Price { get; set; }
         public DateTime RegisterDate { get; set; }
         public DateTime LastUpdateDate { get; set; }

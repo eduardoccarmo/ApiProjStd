@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "MPuxGnlzfniaSf+aCf7azaqJNz7Acw15LP7upUPdLIuHuq/w7eLiziwefz8JvlI2zNyHVYJZTA/ZKTnZVFIVxw==",
+  "dgSpecHash": "3HBKuFymZV4Jq3+vpmShX+/mNNkK8LN5HiLIpwInHOYnR/+YCpHFbtuBkairfJ37NBVfU9n7lyGGlzb+xaVBbQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\ApiProj\\Api.ProjStd.IoC\\Api.Proj.Std.IoC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eduar\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.8\\microsoft.entityframeworkcore.7.0.8.nupkg.sha512",
     "C:\\Users\\eduar\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.8\\microsoft.entityframeworkcore.abstractions.7.0.8.nupkg.sha512",
     "C:\\Users\\eduar\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.8\\microsoft.entityframeworkcore.analyzers.7.0.8.nupkg.sha512",
-    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.2\\microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.8\\microsoft.entityframeworkcore.relational.7.0.8.nupkg.sha512",
     "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

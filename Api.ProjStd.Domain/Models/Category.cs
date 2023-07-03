@@ -11,7 +11,6 @@ namespace Api.Proj.Std.Domain.Models
         #region Constructors
         public Category()
         {
-               
         }
         #endregion
 

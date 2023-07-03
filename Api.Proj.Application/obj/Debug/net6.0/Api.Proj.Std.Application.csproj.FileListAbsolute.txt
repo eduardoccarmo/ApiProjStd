@@ -1,0 +1,17 @@
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\bin\Debug\net6.0\Api.Proj.Std.Application.deps.json
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\bin\Debug\net6.0\Api.Proj.Std.Application.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\bin\Debug\net6.0\Api.Proj.Std.Application.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\bin\Debug\net6.0\Api.Prof.Std.Infra.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\bin\Debug\net6.0\Api.Proj.Std.Domain.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\bin\Debug\net6.0\Api.Prof.Std.Infra.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\bin\Debug\net6.0\Api.Proj.Std.Domain.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.csproj.AssemblyReference.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.AssemblyInfoInputs.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.AssemblyInfo.cs
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.csproj.CoreCompileInputs.cache
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.csproj.CopyComplete
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\refint\Api.Proj.Std.Application.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\Api.Proj.Std.Application.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\Api.Proj.Application\obj\Debug\net6.0\ref\Api.Proj.Std.Application.dll
