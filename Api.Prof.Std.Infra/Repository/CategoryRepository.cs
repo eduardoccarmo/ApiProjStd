@@ -36,18 +36,13 @@ namespace Api.Prof.Std.Infra.Repository
 
                 return newCategory;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
         }
 
         public Task<Category> DeleteCategory(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Category>> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -62,20 +57,12 @@ namespace Api.Prof.Std.Infra.Repository
         public async Task<Category> GetCategoryById(int id)
         {
             var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
-
-            if(category is not null)
-                return category;
-
-            return new Category(); 
+            return category;
         }
 
         public async Task<Category> GetCategoryByName(string name)
         {
             var category = await _context.Categories.FirstAsync(x => x.Name == name);
-
-            if (category == null)
-                return null;
-
             return category;
         }
     }
