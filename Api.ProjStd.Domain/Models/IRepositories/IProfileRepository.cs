@@ -8,5 +8,14 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
 {
     public interface IProfileRepository
     {
+        public Task<Profile> GetById(int id);
+
+        public Task<IEnumerable<Profile>> GetAll();
+
+        public Task<Profile> Add(Profile profile);
+
+        public Task<Profile> Update(Profile profile, int id);
+
+        public Task<Profile> Delete(int id);
     }
 }
