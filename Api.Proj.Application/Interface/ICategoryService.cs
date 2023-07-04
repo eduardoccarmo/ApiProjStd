@@ -15,6 +15,8 @@ namespace Api.Proj.Std.Application.Interface
 
         public Task<Category> AddCategory(Category category);
 
-        public Task<List<Category>> GetAll(); 
+        public Task<List<Category>> GetAll();
+
+        public int CategoryIsValid(Category category);
     }
 }

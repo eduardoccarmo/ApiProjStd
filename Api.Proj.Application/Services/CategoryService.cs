@@ -25,12 +25,16 @@ namespace Api.Proj.Std.Application.Services
         {
             if (category != null)
             {
-                var newCategory = _categoryRepository.AddCategory(category);
+                int categoryIsValid = CategoryIsValid(category);
 
-                return newCategory;
+                if (categoryIsValid > 0)
+                {
+                    var newCategory = _categoryRepository.AddCategory(category);
+
+                    return newCategory;
+                }
             }
-            else
-                return null;
+            return null;
         }
 
         public Task<List<Category>> GetAll()
@@ -45,20 +49,28 @@ namespace Api.Proj.Std.Application.Services
             var category = await _categoryRepository.GetCategoryById(id);
 
             if (category == null)
-                return null; 
+                return null;
 
-            return category;            
+            return category;
         }
 
         public async Task<Category> GetByName(string name)
         {
-            if(name is not null)
+            if (name is not null)
             {
                 var category = await _categoryRepository.GetCategoryByName(name);
                 return category;
             }
 
-            return null; 
+            return null;
+        }
+
+        public int CategoryIsValid(Category category)
+        {
+            if (category.Name == null || category.RegisterDate == null)
+                return -1;
+
+            return 1;
         }
     }
 }
