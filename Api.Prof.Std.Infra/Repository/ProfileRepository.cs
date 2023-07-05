@@ -78,18 +78,18 @@ namespace Api.Prof.Std.Infra.Repository
 
         public async Task<Profile> Update(Profile category, int id)
         {
-            var updateCategory = await _context
+            var updateProfile = await _context
                                       .Profiles
                                       .FirstOrDefaultAsync(x => x.Id == id);
 
             try
             {
-                updateCategory.Name = category.Name;
+                updateProfile.Name = category.Name;
 
-                _context.Update(updateCategory);
+                _context.Update(updateProfile);
                 await _context.SaveChangesAsync();
 
-                return updateCategory;
+                return updateProfile;
             }
             catch (Exception ex)
             {

@@ -86,5 +86,20 @@ namespace Api.Prof.Std.Infra.Repository
                                  .FirstOrDefaultAsync(x => x.Name == name);
             return category;
         }
+
+        public async Task<Category> UpdateCategory(Category category)
+        {
+            try
+            {
+                _context.Categories.Update(category);
+                await _context.SaveChangesAsync();
+
+                return category;
+            }
+            catch (DbUpdateException ex) 
+            {
+                return null;
+            }
+        }
     }
 }

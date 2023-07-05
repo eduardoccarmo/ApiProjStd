@@ -65,6 +65,28 @@ namespace Api.Proj.Std.Application.Services
             return null;
         }
 
+        public async Task<Category> UpdateCategory(Category category, int id)
+        {
+            var isValid = CategoryIsValid(category);
+
+            if (isValid > 0)
+            {
+                var updateCategory = await _categoryRepository.GetCategoryById(id);
+
+                if (updateCategory != null)
+                {
+                    updateCategory.Name = category.Name;
+                    updateCategory.RegisterDate = DateTime.Now;
+
+                    await _categoryRepository.UpdateCategory(updateCategory);
+
+                    return updateCategory;
+                }
+                return null;
+            }
+            else
+                return null;
+        }
         public int CategoryIsValid(Category category)
         {
             if (category.Name == null || category.RegisterDate == null)

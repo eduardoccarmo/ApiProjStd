@@ -4,6 +4,7 @@ using Api.Proj.Std.Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Data.Common;
 
@@ -100,6 +101,33 @@ namespace ApiProjStd.Controllers
             catch (DbException msg)
             {
                 return StatusCode(400, new ResultViewModel<string>(errors: $"ExDb03: DataBaseError{msg.Message}"));
+            }
+        }
+
+        [HttpPut]
+        [Route("PutCategory/{id}")]
+        public async Task<IActionResult> PutCategory(Category category, int id)
+        {
+            try
+            {
+                var updateCategory = await _categoryService.UpdateCategory(category, id);
+
+                if (updateCategory is not null)
+                {
+                    return Ok(new ResultViewModel<dynamic>(
+                        new Category
+                        {
+                            Id = updateCategory.Id,
+                            Name = updateCategory.Name,
+                            RegisterDate = updateCategory.RegisterDate
+                        }));
+                }
+
+                return NotFound(new ResultViewModel<string>(errors:"Category not found."));
+            }
+            catch(DbUpdateException ex)
+            {
+                return StatusCode(400, new ResultViewModel<string>(errors: $"ExDb04 - Data base update error:{ex.Message}"));
             }
         }
     }

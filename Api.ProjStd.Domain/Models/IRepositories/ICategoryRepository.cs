@@ -9,9 +9,15 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
     public interface ICategoryRepository
     {
         Task<Category> DeleteCategory(int categoryId);
+
         Task<List<Category>> GetAllCategories();
+
         Task<Category> GetCategoryByName(string name);
+
         Task<Category> GetCategoryById(int id);
+
         Task<Category> AddCategory(Category category);
+
+        Task<Category> UpdateCategory(Category category);
     }
 }
