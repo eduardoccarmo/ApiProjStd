@@ -17,6 +17,7 @@ namespace Api.Proj.Std.IoC
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProfileRepository, ProfileRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProfileService, ProfileService>();
 
             return services;
         }
