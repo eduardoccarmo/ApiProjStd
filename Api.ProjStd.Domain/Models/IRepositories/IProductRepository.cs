@@ -14,7 +14,6 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
 
         public Task<Product> PostAsync(Product product);
 
-        public Task<Product> Put(Product product, int id);
-;
+        public Task<Product> Put(Product product);
     }
 }

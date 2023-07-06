@@ -9,9 +9,9 @@ namespace Api.Proj.Std.Application.Interface
 {
     public  interface IProductService
     {
-        public Task<Product> GetProductAsync(int id);
+        public Task<IEnumerable<Product>> GetAllAsync();
 
-        public Task<Product> GetAllAsync();
+        public Task<Product> GetById(int id);
 
         public Task<Product> PostAsync(Product product);
 

@@ -75,9 +75,28 @@ namespace Api.Prof.Std.Infra.Repository
             }
         }
 
-        public Task<Product> Put(Product product, int id)
+        public async Task<Product> Put(Product product)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Products.Update(product);
+
+                await _context.SaveChangesAsync();
+
+                return product;
+            }
+            catch (DbUpdateException ex)
+            {
+                return null;
+            }
+            catch(DbException ex)
+            {
+                return null;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
     }
 }
