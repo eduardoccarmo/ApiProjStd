@@ -8,5 +8,6 @@ namespace Api.Proj.Std.Application.Interface
 {
     public interface IProfileService
     {
+
     }
 }

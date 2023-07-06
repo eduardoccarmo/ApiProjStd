@@ -8,8 +8,13 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
 {
     public interface IProductRepository
     {
-        Task<Product> AddProduct(Product product);
-        Task UpdateProdctAsync(int id);
-        Task DeleteProdctAsync(int id);
+        public Task<IEnumerable<Product>> GetAllAsync();
+
+        public Task<Product> GetById(int id);
+
+        public Task<Product> PostAsync(Product product);
+
+        public Task<Product> Put(Product product, int id);
+;
     }
 }

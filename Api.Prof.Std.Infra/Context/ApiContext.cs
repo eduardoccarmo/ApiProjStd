@@ -10,7 +10,7 @@ namespace Api.Prof.Std.Infra.Context
     {
         //public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
-        //public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Profile> Profiles { get; set; }
 
         private string _connectionString = "Server=localhost;Port=3306;Database=project_std;Uid=root;Pwd=root;";
@@ -20,6 +20,8 @@ namespace Api.Prof.Std.Infra.Context
             // modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApiContext).Assembly);
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new ProfileMap());
+            modelBuilder.ApplyConfiguration(new ProductMap());
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
