@@ -4,6 +4,7 @@ using Api.Proj.Std.Domain.Models.IRepositories;
 using Api.Proj.Std.Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
 namespace ApiProjStd.Controllers
@@ -23,12 +24,28 @@ namespace ApiProjStd.Controllers
         [Route("Put/{id}")]
         public async Task<IActionResult> PutAsync(Product product, int id)
         {
-            var updateProduct = await _productService.Put(product, id);
+            try
+            {
+                var updateProduct = await _productService.Put(product, id);
 
-            if (updateProduct != null)
-                return Ok(updateProduct);
+                if (updateProduct != null)
+                    return Ok(new ResultViewModel<dynamic>(
+                             new Product
+                             {
+                                 Id = product.Id,
+                                 Name = product.Name,
+                                 Brand = product.Brand,
+                                 Category = product.Category,
+                                 RegisterDate = product.RegisterDate,
+                                 LastUpdateDate = product.LastUpdateDate
+                             }));
 
-            return BadRequest();
+                return BadRequest(new ResultViewModel<string>(errors: "An error has ocurred on update product."));
+            }
+            catch(DbUpdateException ex)
+            {
+                return StatusCode(500, new ResultViewModel<string>(errors: $"An error has ocurred on update product: {ex.Message}."));
+            }
         }
 
         [HttpPost]

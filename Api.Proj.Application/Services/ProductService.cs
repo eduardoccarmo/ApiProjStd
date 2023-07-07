@@ -112,7 +112,10 @@ namespace Api.Proj.Std.Application.Services
             
             if(!oldValue.Category.Equals(newValue.Category))
                 updateProduct.Category = newValue.Category;
-           
+
+            if (!oldValue.Price.Equals(newValue.Price))
+                updateProduct.Price = newValue.Price;
+
             updateProduct.LastUpdateDate = DateTime.Now;
 
             return updateProduct;
