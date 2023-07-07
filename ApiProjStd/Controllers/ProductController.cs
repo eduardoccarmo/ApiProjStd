@@ -1,8 +1,10 @@
 ﻿using Api.Proj.Std.Application.Interface;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
+using Api.Proj.Std.Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace ApiProjStd.Controllers
 {
@@ -27,6 +29,34 @@ namespace ApiProjStd.Controllers
                 return Ok(updateProduct);
 
             return BadRequest();
+        }
+
+        [HttpPost]
+        [Route("Post")]
+        public async Task<IActionResult> Post(Product product)
+        {
+            try
+            {
+                var newProduct = await _productService.PostAsync(product);
+
+                if (newProduct != null)
+                    return Created(nameof(Post), new ResultViewModel<dynamic>(
+                        new Product
+                        {
+                            Id = product.Id,
+                            Name = product.Name,
+                            Brand = product.Brand,
+                            Category = product.Category,
+                            RegisterDate = product.RegisterDate,
+                            LastUpdateDate = product.LastUpdateDate
+                        }));
+
+                return BadRequest(new ResultViewModel<string>(errors: "One error has ocurred when we trie to save the product"));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, new ResultViewModel<string>(errors: $"An Error has ocurred: {ex.Message}."));
+            }            
         }
     }
 }

@@ -75,12 +75,11 @@ namespace Api.Proj.Std.Application.Services
                     if (updateProduct is not null)
                         return updateProduct;
 
-                    return null;
+                    return new Product();
                 }
-                return null; 
-                    
+                return new Product();                    
             }
-            return null;
+            return new Product();
         }
 
         public int ProductIsValid(Product product)
@@ -94,23 +93,26 @@ namespace Api.Proj.Std.Application.Services
         
         public Product PropertyIsChangeg(Product oldValue, Product newValue)
         {
-            var updateProduct = new Product();
+            var updateProduct = new Product
+            {
+                Id = oldValue.Id,
+                Name = oldValue.Name,
+                Brand = oldValue.Brand,
+                Category = oldValue.Category,
+                Price = oldValue.Price,
+                RegisterDate = oldValue.RegisterDate,
+                LastUpdateDate = oldValue.LastUpdateDate
+            };
 
-            if (oldValue.Name.Equals(newValue.Name))
+            if (!oldValue.Name.Equals(newValue.Name))
                 updateProduct.Name = newValue.Name;
-            else
-                updateProduct.Name = oldValue.Name;
-
-            if(oldValue.Brand.Equals(newValue.Brand))
+           
+            if(!oldValue.Brand.Equals(newValue.Brand))
                 updateProduct.Brand = newValue.Brand;
-            else
-                updateProduct.Brand = oldValue.Brand;
-
-            if(oldValue.Category.Equals(newValue.Category))
+            
+            if(!oldValue.Category.Equals(newValue.Category))
                 updateProduct.Category = newValue.Category;
-            else
-                updateProduct.Category = oldValue.Category;
-
+           
             updateProduct.LastUpdateDate = DateTime.Now;
 
             return updateProduct;
