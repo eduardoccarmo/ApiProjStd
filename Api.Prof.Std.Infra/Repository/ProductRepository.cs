@@ -34,7 +34,7 @@ namespace Api.Prof.Std.Infra.Repository
             if (products is not null)
                 return products;
 
-            return null; 
+            return null;
         }
 
         public async Task<Product> GetById(int id)
@@ -44,7 +44,7 @@ namespace Api.Prof.Std.Infra.Repository
                                 .AsNoTracking()
                                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            if(product is not null ) 
+            if (product is not null)
                 return product;
 
             return null;
@@ -63,43 +63,19 @@ namespace Api.Prof.Std.Infra.Repository
                 LastUpdateDate = product.LastUpdateDate,
             };
 
-            try
-            {
-                await _context.Products.AddAsync(newProduct);
-                await _context.SaveChangesAsync();
+            await _context.Products.AddAsync(newProduct);
+            await _context.SaveChangesAsync();
 
-                return newProduct;
-            }
-            catch(DbException ex)
-            {
-                return null; 
-            }
+            return newProduct;
         }
 
         public async Task<Product> Put(Product product)
         {
-            try
-            {
-                _context.Products.Update(product);
+            _context.Products.Update(product);
 
-                await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-                return product;
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new DbUpdateException(); 
-
-                return null;
-            }
-            catch(DbException ex)
-            {
-                return null;
-            }
-            catch(Exception ex)
-            {
-                return null;
-            }
+            return product;
         }
     }
 }

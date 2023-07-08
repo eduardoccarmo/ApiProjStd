@@ -48,21 +48,22 @@ namespace Api.Proj.Std.Application.Services
         {
             var result = ProductIsValid(product);
 
-            if(result > 0)
+            if (result > 0)
             {
                 var newProduct = await _productRepository.PostAsync(product);
 
                 if (newProduct is not null)
                     return newProduct;
             }
-            return null; 
+
+            return null;
         }
 
         public async Task<Product> Put(Product product, int id)
         {
-            var updateProduct = await _productRepository.GetById(id); 
+            var updateProduct = await _productRepository.GetById(id);
 
-            if(updateProduct is not null)
+            if (updateProduct is not null)
             {
                 var isValid = ProductIsValid(product);
 
@@ -75,11 +76,13 @@ namespace Api.Proj.Std.Application.Services
                     if (updateProduct is not null)
                         return updateProduct;
 
-                    return new Product();
+                    return null;
                 }
-                return new Product();                    
+
+                return null;
             }
-            return new Product();
+
+            return null;
         }
 
         public int ProductIsValid(Product product)
@@ -90,7 +93,7 @@ namespace Api.Proj.Std.Application.Services
 
             return 1;
         }
-        
+
         public Product PropertyIsChangeg(Product oldValue, Product newValue)
         {
             var updateProduct = new Product
@@ -106,11 +109,11 @@ namespace Api.Proj.Std.Application.Services
 
             if (!oldValue.Name.Equals(newValue.Name))
                 updateProduct.Name = newValue.Name;
-           
-            if(!oldValue.Brand.Equals(newValue.Brand))
+
+            if (!oldValue.Brand.Equals(newValue.Brand))
                 updateProduct.Brand = newValue.Brand;
-            
-            if(!oldValue.Category.Equals(newValue.Category))
+
+            if (!oldValue.Category.Equals(newValue.Category))
                 updateProduct.Category = newValue.Category;
 
             if (!oldValue.Price.Equals(newValue.Price))

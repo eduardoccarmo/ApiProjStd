@@ -44,7 +44,7 @@ namespace ApiProjStd.Controllers
             }
             catch(DbUpdateException ex)
             {
-                return StatusCode(500, new ResultViewModel<string>(errors: $"An error has ocurred on update product: {ex.Message}."));
+                return StatusCode(500, new ResultViewModel<DbUpdateException>(errors: $"An error has ocurred on update product: {ex.Message}."));
             }
         }
 
@@ -68,11 +68,11 @@ namespace ApiProjStd.Controllers
                             LastUpdateDate = product.LastUpdateDate
                         }));
 
-                return BadRequest(new ResultViewModel<string>(errors: "One error has ocurred when we trie to save the product"));
+                return BadRequest(new ResultViewModel<string>(errors: "There was an error on updating the product."));
             }
             catch(Exception ex)
             {
-                return StatusCode(500, new ResultViewModel<string>(errors: $"An Error has ocurred: {ex.Message}."));
+                return StatusCode(500, new ResultViewModel<Exception>(errors: $"An Error has ocurred: {ex.Message}."));
             }            
         }
     }
