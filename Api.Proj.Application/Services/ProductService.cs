@@ -92,10 +92,5 @@ namespace Api.Proj.Std.Application.Services
 
             return updateProduct;
         }
-
-        public Task<Product> PostAsync(Product product)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

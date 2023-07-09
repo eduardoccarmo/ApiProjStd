@@ -1,4 +1,5 @@
 ﻿using Api.Proj.Std.Application.Interface;
+using Api.Proj.Std.Domain.Extensions;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
 using Api.Proj.Std.Domain.ViewModels;
@@ -9,7 +10,7 @@ using System.Runtime.CompilerServices;
 
 namespace ApiProjStd.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/product")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -50,29 +51,43 @@ namespace ApiProjStd.Controllers
 
         [HttpPost]
         [Route("PostAsync")]
-        public async Task<IActionResult> Post(Product product)
+        public async Task<IActionResult> Post(ProductCreateViewModel product)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(new ResultViewModel<Product>(errors: ModelState.GetErrors()));
+
             try
             {
-                var newProduct = await _productService.PostAsync(product);
+                var newProduct = new Product
+                {
+                    Name = product.Name,
+                    Brand = product.Brand,
+                    Category = product.Category,
+                    RegisterDate = product.RegisterDate,
+                    LastUpdateDate = product.LastUpdateDate
+                };
 
                 if (newProduct != null)
                     return Created($"PostAsync/{newProduct.Id}", new ResultViewModel<dynamic>(
                         new Product
                         {
-                            Id = product.Id,
-                            Name = product.Name,
-                            Brand = product.Brand,
-                            Category = product.Category,
-                            RegisterDate = product.RegisterDate,
-                            LastUpdateDate = product.LastUpdateDate
+                            Id = newProduct.Id,
+                            Name = newProduct.Name,
+                            Brand = newProduct.Brand,
+                            Category = newProduct.Category,
+                            RegisterDate = newProduct.RegisterDate,
+                            LastUpdateDate = newProduct.LastUpdateDate
                         }));
 
-                return BadRequest(new ResultViewModel<string>(errors: "There was an error on updating the product."));
+                return BadRequest(new ResultViewModel<Product>(errors: "There was an error on updating the product."));
             }
-             catch (Exception ex)
+            catch (FormatException ex)
             {
-                return StatusCode(500, new ResultViewModel<Product>(errors: $"An Error has ocurred: {ex.Message}."));
+                return BadRequest(new ResultViewModel<ProductCreateViewModel>(errors: ModelState.GetErrors()));
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, new ResultViewModel<Product>(errors: $"An error has ocurred on update product: {ex.Message}."));
             }
         }
 

@@ -52,3 +52,10 @@ C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\Ap
 C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\Api.Proj.Std.Domain.pdb
 C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\Api.Proj.Std.IoC.dll
 C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\Api.Proj.Std.IoC.pdb
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\eduar\OneDrive\Área de Trabalho\ApiProj\ApiProjStd\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
