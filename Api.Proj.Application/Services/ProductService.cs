@@ -1,14 +1,7 @@
 ﻿using Api.Proj.Std.Application.Interface;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
-using Microsoft.EntityFrameworkCore.Update;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Api.Proj.Std.Domain.ViewModels;
 
 namespace Api.Proj.Std.Application.Services
 {
@@ -46,17 +39,12 @@ namespace Api.Proj.Std.Application.Services
 
         public async Task<Product> PostAsync(Product product)
         {
-            var result = ProductIsValid(product);
+            var newProduct = await _productRepository.PostAsync(product);
 
-            if (result > 0)
-            {
-                var newProduct = await _productRepository.PostAsync(product);
+            if (newProduct is not null)
+                return newProduct;
 
-                if (newProduct is not null)
-                    return newProduct;
-            }
-
-            return null;
+            return null; 
         }
 
         public async Task<Product> Put(Product product, int id)
@@ -65,33 +53,14 @@ namespace Api.Proj.Std.Application.Services
 
             if (updateProduct is not null)
             {
-                var isValid = ProductIsValid(product);
+                updateProduct = PropertyIsChangeg(updateProduct, product);
 
-                if (isValid > 0)
-                {
-                    updateProduct = PropertyIsChangeg(updateProduct, product);
+                updateProduct = await _productRepository.Put(updateProduct);
 
-                    updateProduct = await _productRepository.Put(updateProduct);
-
-                    if (updateProduct is not null)
-                        return updateProduct;
-
-                    return null;
-                }
-
-                return null;
+                if (updateProduct is not null)
+                    return updateProduct;
             }
-
             return null;
-        }
-
-        public int ProductIsValid(Product product)
-        {
-            if (product.Name == null || product.Brand == null || product.Category == null
-                || product.Category == null || product.LastUpdateDate == null)
-                return -1;
-
-            return 1;
         }
 
         public Product PropertyIsChangeg(Product oldValue, Product newValue)
@@ -122,6 +91,11 @@ namespace Api.Proj.Std.Application.Services
             updateProduct.LastUpdateDate = DateTime.Now;
 
             return updateProduct;
+        }
+
+        public Task<Product> PostAsync(Product product)
+        {
+            throw new NotImplementedException();
         }
     }
 }

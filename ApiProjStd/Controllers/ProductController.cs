@@ -21,7 +21,7 @@ namespace ApiProjStd.Controllers
         }
 
         [HttpPut]
-        [Route("Put/{id}")]
+        [Route("PutAsync/{id}")]
         public async Task<IActionResult> PutAsync(Product product, int id)
         {
             try
@@ -42,14 +42,14 @@ namespace ApiProjStd.Controllers
 
                 return BadRequest(new ResultViewModel<string>(errors: "An error has ocurred on update product."));
             }
-            catch(DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
                 return StatusCode(500, new ResultViewModel<DbUpdateException>(errors: $"An error has ocurred on update product: {ex.Message}."));
             }
         }
 
         [HttpPost]
-        [Route("Post")]
+        [Route("PostAsync")]
         public async Task<IActionResult> Post(Product product)
         {
             try
@@ -57,7 +57,7 @@ namespace ApiProjStd.Controllers
                 var newProduct = await _productService.PostAsync(product);
 
                 if (newProduct != null)
-                    return Created(nameof(Post), new ResultViewModel<dynamic>(
+                    return Created($"PostAsync/{newProduct.Id}", new ResultViewModel<dynamic>(
                         new Product
                         {
                             Id = product.Id,
@@ -70,10 +70,34 @@ namespace ApiProjStd.Controllers
 
                 return BadRequest(new ResultViewModel<string>(errors: "There was an error on updating the product."));
             }
-            catch(Exception ex)
+             catch (Exception ex)
             {
-                return StatusCode(500, new ResultViewModel<Exception>(errors: $"An Error has ocurred: {ex.Message}."));
-            }            
+                return StatusCode(500, new ResultViewModel<Product>(errors: $"An Error has ocurred: {ex.Message}."));
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAllAsync")]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var products = await _productService.GetAllAsync();
+
+            if (products is not null)
+                return Ok(products);
+
+            return NotFound(new ResultViewModel<string>(errors: "Products not found."));
+        }
+
+        [HttpGet]
+        [Route("GetByIdAsync/{id}")]
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            var product = await _productService.GetById(id);
+
+            if (product is not null)
+                return Ok(product);
+
+            return NotFound(new ResultViewModel<string>(errors: "Product not found."));
         }
     }
 }
