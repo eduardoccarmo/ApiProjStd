@@ -58,25 +58,21 @@ namespace ApiProjStd.Controllers
 
             try
             {
-                var newProduct = new Product
-                {
-                    Name = product.Name,
-                    Brand = product.Brand,
-                    Category = product.Category,
-                    RegisterDate = product.RegisterDate,
-                    LastUpdateDate = product.LastUpdateDate
-                };
+                Product newProd = new Product();
 
-                if (newProduct != null)
-                    return Created($"PostAsync/{newProduct.Id}", new ResultViewModel<dynamic>(
+                newProd = await _productService.PostAsync(product);
+
+                if (newProd != null)
+                    return Created($"PostAsync/{newProd.Id}", new ResultViewModel<dynamic>(
                         new Product
                         {
-                            Id = newProduct.Id,
-                            Name = newProduct.Name,
-                            Brand = newProduct.Brand,
-                            Category = newProduct.Category,
-                            RegisterDate = newProduct.RegisterDate,
-                            LastUpdateDate = newProduct.LastUpdateDate
+                            Id = newProd.Id,
+                            Name = newProd.Name,
+                            Brand = newProd.Brand,
+                            Category = newProd.Category,
+                            Price = newProd.Price,
+                            RegisterDate = newProd.RegisterDate,
+                            LastUpdateDate = newProd.LastUpdateDate
                         }));
 
                 return BadRequest(new ResultViewModel<Product>(errors: "There was an error on updating the product."));
@@ -113,6 +109,39 @@ namespace ApiProjStd.Controllers
                 return Ok(product);
 
             return NotFound(new ResultViewModel<string>(errors: "Product not found."));
+        }
+
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var product = await _productService.DeleteById(id);
+
+                if (product is not null)
+                    return Ok(new ResultViewModel<dynamic>(
+                        new Product
+                        {
+                            Id = product.Id,
+                            Name = product.Name,
+                            Brand = product.Brand,
+                            Category = product.Category,
+                            Price = product.Price,
+                            RegisterDate = product.RegisterDate,
+                            LastUpdateDate = product.LastUpdateDate
+                        }));
+
+                return BadRequest(new ResultViewModel<Product>(errors: "Product not found."));
+            }
+            catch(DbUpdateException ex)
+            {
+                return StatusCode(500, new ResultViewModel<Product>(errors: $"An DataBase error has ocurred: {ex.Message}"));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, new ResultViewModel<Product>(errors: $"An error has ocurred: {ex.Message}"));
+            }
         }
     }
 }

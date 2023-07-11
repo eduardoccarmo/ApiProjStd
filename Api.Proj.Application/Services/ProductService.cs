@@ -2,6 +2,7 @@
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
 using Api.Proj.Std.Domain.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace Api.Proj.Std.Application.Services
 {
@@ -37,14 +38,27 @@ namespace Api.Proj.Std.Application.Services
             return product;
         }
 
-        public async Task<Product> PostAsync(Product product)
+        public async Task<Product> PostAsync(ProductCreateViewModel product)
         {
-            var newProduct = await _productRepository.PostAsync(product);
+            int id = (int)await _productRepository.GetMaxID();
 
-            if (newProduct is not null)
+            var newProduct = new Product
+            {
+                Id = id,
+                Name = product.Name,
+                Brand = product.Brand,
+                Category = product.Category,
+                Price = product.Price,
+                RegisterDate = DateTime.Now,
+                LastUpdateDate = DateTime.Now
+            };
+
+            var ret = _productRepository.PostAsync(newProduct);
+
+            if (ret is not null)
                 return newProduct;
 
-            return null; 
+            return null;
         }
 
         public async Task<Product> Put(Product product, int id)
@@ -60,6 +74,7 @@ namespace Api.Proj.Std.Application.Services
                 if (updateProduct is not null)
                     return updateProduct;
             }
+
             return null;
         }
 
@@ -91,6 +106,24 @@ namespace Api.Proj.Std.Application.Services
             updateProduct.LastUpdateDate = DateTime.Now;
 
             return updateProduct;
+        }
+
+        public async Task<Product> DeleteById(int id)
+        {
+            if (id > 0)
+            {
+                Product? product = await _productRepository.GetById(id);
+
+                if (product is not null && product.Price < 1500)
+                {
+                    await _productRepository.DeleteById(product);
+                    return product;
+                }
+
+                throw new Exception(message: "Cannot delete product because the price is more than 1500.");
+            }
+
+            return null;
         }
     }
 }

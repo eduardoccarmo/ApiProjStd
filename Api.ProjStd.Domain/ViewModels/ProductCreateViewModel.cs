@@ -12,15 +12,11 @@ namespace Api.Proj.Std.Domain.ViewModels
         public string? Brand { get; set; }
 
         [Required(ErrorMessage = "Category is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Category must be greater than 0.")]
         public int? Category { get; set; }
 
         [Required(ErrorMessage = "Price is required.")]
+        [Range(1, double.MaxValue, ErrorMessage = "Price must be greater than 0.")]
         public double? Price { get; set; }
-
-        [Required(ErrorMessage = "RegisterDate is required.")]
-        public DateTime? RegisterDate { get; set; }
-
-        [Required(ErrorMessage = "LastUpdateDate is required.")]
-        public DateTime? LastUpdateDate { get; set; }
     }
 }

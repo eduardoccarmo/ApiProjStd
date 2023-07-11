@@ -22,7 +22,14 @@ namespace Api.Prof.Std.Infra.Repository
             _context = context;
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<Product> DeleteById(Product product)
+        {
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return product;
+        }
+                public async Task<IEnumerable<Product>> GetAllAsync()
         {
             var products = new List<Product>();
 
@@ -50,6 +57,18 @@ namespace Api.Prof.Std.Infra.Repository
             return null;
         }
 
+        public async Task<long> GetMaxID()
+        {
+            long id;
+
+            id = _context
+                .Products
+                .Select(x => x.Id)
+                .Max(x => x.Value);
+
+            return id + 1;
+        }
+
         public async Task<Product> PostAsync(Product product)
         {
             var newProduct = new Product
@@ -59,8 +78,8 @@ namespace Api.Prof.Std.Infra.Repository
                 Brand = product.Brand,
                 Category = product.Category,
                 Price = product.Price,
-                RegisterDate = product.RegisterDate,
-                LastUpdateDate = product.LastUpdateDate,
+                RegisterDate = DateTime.Now,
+                LastUpdateDate = DateTime.Now
             };
 
             await _context.Products.AddAsync(newProduct);

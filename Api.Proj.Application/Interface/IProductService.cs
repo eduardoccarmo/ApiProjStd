@@ -1,4 +1,5 @@
 ﻿using Api.Proj.Std.Domain.Models;
+using Api.Proj.Std.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,11 @@ namespace Api.Proj.Std.Application.Interface
 
         public Task<Product> GetById(int id);
 
-        public Task<Product> PostAsync(Product product);
+        public Task<Product> PostAsync(ProductCreateViewModel product);
 
         public Task<Product> Put(Product product, int id);
+
+        public Task<Product> DeleteById(int id);
 
     }
 }
