@@ -29,7 +29,7 @@ namespace Api.Prof.Std.Infra.Repository
 
             return product;
         }
-                public async Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
             var products = new List<Product>();
 
