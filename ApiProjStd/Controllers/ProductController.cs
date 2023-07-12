@@ -139,7 +139,7 @@ namespace ApiProjStd.Controllers
                 return StatusCode(500, new ResultViewModel<Product>(errors: $"An DataBase error has ocurred: {ex.Message}"));
             }
             catch(Exception ex)
-            {
+            { 
                 return StatusCode(500, new ResultViewModel<Product>(errors: $"An error has ocurred: {ex.Message}"));
             }
         }

@@ -1,13 +1,6 @@
 ﻿using Api.Proj.Std.Application.Interface;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
-using Api.Proj.Std.Domain.ViewModels;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Api.Proj.Std.Application.Services
 {
@@ -20,7 +13,7 @@ namespace Api.Proj.Std.Application.Services
             _profileRepository = profileRepository;
         }
 
-        public async Task<IEnumerable<Profile>> GetAllAsync()
+        public async Task<List<Profile>> GetAllAsync()
         {
             var profiles = await _profileRepository.GetAll();
 

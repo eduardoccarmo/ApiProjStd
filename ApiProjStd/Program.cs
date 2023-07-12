@@ -3,7 +3,10 @@ using MySqlConnector;
 
 var builder = WebApplication.CreateBuilder(args);
 
-ApplicationServiceExtensions.AplicationServices(builder.Services);
+builder.Services.AplicationServices();
+
+
+//ApplicationServiceExtensions.AplicationServices(builder.Services);
 
 // Add services to the container.
 

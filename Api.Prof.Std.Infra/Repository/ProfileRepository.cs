@@ -55,11 +55,9 @@ namespace Api.Prof.Std.Infra.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Profile>> GetAll()
+        public async Task<List<Profile>> GetAll()
         {
-            var profiles = new List<Profile>();
-
-            profiles = await _context
+            var profiles = await _context
                             .Profiles
                             .AsNoTracking()
                             .ToListAsync();

@@ -9,7 +9,7 @@ namespace Api.Proj.Std.Application.Interface
 {
     public interface IProfileService
     {
-        Task <IEnumerable<Profile>> GetAllAsync();
+        Task <List<Profile>> GetAllAsync();
 
         Task<Profile> GetAsync(int id);
     }

@@ -10,7 +10,7 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
     {
         public Task<Profile> GetById(int id);
 
-        public Task<IEnumerable<Profile>> GetAll();
+        public Task<List<Profile>> GetAll();
 
         public Task<Profile> Add(Profile profile);
 
