@@ -2,12 +2,6 @@
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Api.Prof.Std.Infra.Repository
 {
@@ -38,11 +32,7 @@ namespace Api.Prof.Std.Infra.Repository
             }
             catch (DbUpdateException ex)
             {
-                return null;
-            }
-            catch (DbException ex)
-            {
-                return null;
+                throw new DbUpdateException(message: "DataBase error");
             }
             catch (Exception ex)
             {
@@ -72,6 +62,18 @@ namespace Api.Prof.Std.Infra.Repository
                                .AsNoTracking()
                                .FirstOrDefaultAsync(x => x.Id == id);
             return profile;
+        }
+
+        public async Task<long> GetMaxId()
+        {
+            long id;
+
+            id = _context
+                .Profiles
+                .Select(x => x.Id)
+                .Max();
+
+            return id + 1;
         }
 
         public async Task<Profile> Update(Profile category, int id)

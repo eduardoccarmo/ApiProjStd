@@ -5,6 +5,7 @@ using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiProjStd.Controllers
 {
@@ -67,7 +68,7 @@ namespace ApiProjStd.Controllers
             try
             {
                 var newProfile = await _profileService.AddAsync(profile);
-
+                
                 if (newProfile is not null)
                     return Created($"PostAsync/id{newProfile.Id}", new ResultViewModel<dynamic>(
                         new Profile
@@ -77,6 +78,10 @@ namespace ApiProjStd.Controllers
                         }));
 
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "One or more errors has ocurred."));
+            }
+            catch(DbUpdateException ex)
+            {
+                return StatusCode(500, new ResultViewModel<Profile>(errors:$"{ex.Message}"));
             }
             catch (Exception ex)
             {

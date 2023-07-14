@@ -17,5 +17,7 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
         public Task<Profile> Update(Profile profile, int id);
 
         public Task<Profile> Delete(int id);
+
+        public Task<long> GetMaxId();
     }
 }

@@ -18,9 +18,11 @@ namespace Api.Proj.Std.Application.Services
         {
             if (profile is not null)
             {
+
+
                 var newProfile = new Profile
                 {
-                    Id = 10,
+                    Id = (int) await _profileRepository.GetMaxId(),
                     Name = profile.Name
                 };
 

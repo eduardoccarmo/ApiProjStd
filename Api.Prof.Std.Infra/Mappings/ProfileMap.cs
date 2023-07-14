@@ -19,6 +19,7 @@ namespace Api.Prof.Std.Infra.Mappings
 
             builder.Property(x => x.Id)
                 .HasColumnName("ID_PROFILE")
+                .HasColumnType("NUMBER")
                 .ValueGeneratedOnAdd()
                 .UseMySqlIdentityColumn();
 
