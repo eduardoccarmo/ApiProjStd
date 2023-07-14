@@ -80,19 +80,10 @@ namespace Api.Prof.Std.Infra.Repository
                                       .Profiles
                                       .FirstOrDefaultAsync(x => x.Id == id);
 
-            try
-            {
-                updateProfile.Name = category.Name;
+            _context.Update(updateProfile);
+            _context.SaveChangesAsync();
 
-                _context.Update(updateProfile);
-                await _context.SaveChangesAsync();
-
-                return updateProfile;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            return updateProfile;
         }
     }
 }
