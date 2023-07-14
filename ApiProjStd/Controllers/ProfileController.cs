@@ -1,5 +1,6 @@
 ﻿using Api.Proj.Std.Application.Interface;
 using Api.Proj.Std.Application.Services;
+using Api.Proj.Std.Domain.Extensions;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -53,6 +54,33 @@ namespace ApiProjStd.Controllers
             catch(Exception ex)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "An erros has ocured."));
+            }
+        }
+
+        [HttpPost]
+        [Route("PostAsync")]
+        public async Task<IActionResult> PostAsync(ProfileCreateViewModel profile)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(new ResultViewModel<Profile>(errors: ModelState.GetErrors()));
+
+            try
+            {
+                var newProfile = await _profileService.AddAsync(profile);
+
+                if (newProfile is not null)
+                    return Created($"PostAsync/id{newProfile.Id}", new ResultViewModel<dynamic>(
+                        new Profile
+                        {
+                            Id = newProfile.Id,
+                            Name = newProfile.Name
+                        }));
+
+                return StatusCode(500, new ResultViewModel<Profile>(errors: "One or more errors has ocurred."));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ResultViewModel<Profile>(errors: "One or more errors has ocurred."));
             }
         }
     }

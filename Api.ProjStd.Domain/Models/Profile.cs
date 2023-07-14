@@ -8,6 +8,11 @@ namespace Api.Proj.Std.Domain.Models
 {
     public class Profile
     {
+        public Profile()
+        {
+
+        }
+
         public int Id { get; set; } 
         public string Name { get; set; }
     }

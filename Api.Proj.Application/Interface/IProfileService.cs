@@ -1,4 +1,5 @@
 ﻿using Api.Proj.Std.Domain.Models;
+using Api.Proj.Std.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace Api.Proj.Std.Application.Interface
         Task <List<Profile>> GetAllAsync();
 
         Task<Profile> GetAsync(int id);
+
+        Task<Profile> AddAsync(ProfileCreateViewModel profile);
     }
 }

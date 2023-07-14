@@ -1,6 +1,7 @@
 ﻿using Api.Proj.Std.Application.Interface;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
+using Api.Proj.Std.Domain.ViewModels;
 
 namespace Api.Proj.Std.Application.Services
 {
@@ -11,6 +12,27 @@ namespace Api.Proj.Std.Application.Services
         public ProfileService(IProfileRepository profileRepository)
         {
             _profileRepository = profileRepository;
+        }
+
+        public async Task<Profile> AddAsync(ProfileCreateViewModel profile)
+        {
+            if (profile is not null)
+            {
+                var newProfile = new Profile
+                {
+                    Id = 10,
+                    Name = profile.Name
+                };
+
+                var ret = await _profileRepository.Add(newProfile);
+
+                if (ret is not null)
+                    return ret;
+
+                return new Profile();
+            }
+
+            return new Profile();
         }
 
         public async Task<List<Profile>> GetAllAsync()
@@ -37,5 +59,6 @@ namespace Api.Proj.Std.Application.Services
 
             return null;
         }
+
     }
 }
