@@ -14,7 +14,7 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
 
         public Task<Profile> Add(Profile profile);
 
-        public Task<Profile> Update(Profile profile, int id);
+        public Task<Profile> Update(Profile profile);
 
         public Task<Profile> Delete(Profile profile);
 

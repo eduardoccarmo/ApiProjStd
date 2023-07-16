@@ -47,14 +47,51 @@ namespace ApiProjStd.Controllers
             {
                 var profile = await _profileService.GetAsync(id);
 
-                if(profile is not null)
+                if (profile is not null)
                     return Ok(profile);
 
                 return BadRequest(new ResultViewModel<Profile>(errors: "Profile is not found."));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "An erros has ocured."));
+            }
+        }
+
+        [HttpPut]
+        [Route("Put/{id}")]
+        public async Task<IActionResult> Put(ProfileCreateViewModel profile, int id)
+        {
+            if (id <= 0)
+                return BadRequest(new ResultViewModel<Profile>(errors: "Id invalid."));
+
+            if (!ModelState.IsValid)
+                return BadRequest(new ResultViewModel<Profile>(errors: ModelState.GetErrors()));
+
+            try
+            {
+                var oldProfile = await _profileService.GetAsync(id);
+
+                if (oldProfile is not null)
+                    return NotFound(new ResultViewModel<Profile>(errors: "Profile not found."));
+
+                var updateProfile = _profileService.Update(profile, oldProfile);
+
+                if (updateProfile is not null)
+                    return Ok(new ResultViewModel<dynamic>(
+                        new Profile
+                        {
+                            Id = id,
+                            Name = profile.Name
+                        }));
+            }
+            catch (DbUpdateException)
+            {
+                return StatusCode(500, new ResultViewModel<Profile>(errors: "An database error has ocurred."));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new ResultViewModel<Profile>(errors: "An error has ocurred."));
             }
         }
 
@@ -68,7 +105,7 @@ namespace ApiProjStd.Controllers
             try
             {
                 var newProfile = await _profileService.AddAsync(profile);
-                
+
                 if (newProfile is not null)
                     return Created($"PostAsync/id{newProfile.Id}", new ResultViewModel<dynamic>(
                         new Profile
@@ -79,9 +116,9 @@ namespace ApiProjStd.Controllers
 
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "One or more errors has ocurred."));
             }
-            catch(DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
-                return StatusCode(500, new ResultViewModel<Profile>(errors:$"{ex.Message}"));
+                return StatusCode(500, new ResultViewModel<Profile>(errors: $"{ex.Message}"));
             }
             catch (Exception ex)
             {
@@ -110,7 +147,7 @@ namespace ApiProjStd.Controllers
 
                 return BadRequest(new ResultViewModel<Profile>(errors: "Profile not found."));
             }
-            catch(DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "An database error has ocurred."));
             }

@@ -74,5 +74,18 @@ namespace Api.Proj.Std.Application.Services
             return null;
         }
 
+        public async Task<Profile> Update(ProfileCreateViewModel newProfile, Profile profile)
+        {
+            if(newProfile is not null)
+            {
+                profile.Name = newProfile.Name;
+
+                var ret = await _profileRepository.Update(profile);
+
+                return ret;
+            }
+
+            return null;
+        }
     }
 }

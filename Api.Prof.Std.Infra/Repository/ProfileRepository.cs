@@ -14,7 +14,6 @@ namespace Api.Prof.Std.Infra.Repository
             _context = context;
         }
 
-
         public async Task<Profile> Add(Profile profile)
         {
             var newProfile = new Profile
@@ -80,16 +79,12 @@ namespace Api.Prof.Std.Infra.Repository
             return id + 1;
         }
 
-        public async Task<Profile> Update(Profile category, int id)
+        public async Task<Profile> Update(Profile profile)
         {
-            var updateProfile = await _context
-                                      .Profiles
-                                      .FirstOrDefaultAsync(x => x.Id == id);
+            _context.Update(profile);
+            await _context.SaveChangesAsync();
 
-            _context.Update(updateProfile);
-            _context.SaveChangesAsync();
-
-            return updateProfile;
+            return profile;
         }
     }
 }
