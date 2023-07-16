@@ -18,11 +18,9 @@ namespace Api.Proj.Std.Application.Services
         {
             if (profile is not null)
             {
-
-
                 var newProfile = new Profile
                 {
-                    Id = (int) await _profileRepository.GetMaxId(),
+                    Id = (int)await _profileRepository.GetMaxId(),
                     Name = profile.Name
                 };
 
@@ -35,6 +33,20 @@ namespace Api.Proj.Std.Application.Services
             }
 
             return new Profile();
+        }
+
+        public async Task<Profile> Delete(int id)
+        {
+           var profile = await _profileRepository.GetById(id);
+
+            if(profile is not null)
+            {
+                var deletedProfile = await _profileRepository.Delete(profile);
+
+                return deletedProfile;
+            }
+
+            return null; 
         }
 
         public async Task<List<Profile>> GetAllAsync()

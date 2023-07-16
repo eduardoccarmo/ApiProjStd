@@ -15,5 +15,7 @@ namespace Api.Proj.Std.Application.Interface
         Task<Profile> GetAsync(int id);
 
         Task<Profile> AddAsync(ProfileCreateViewModel profile);
+
+        Task<Profile> Delete(int id);
     }
 }

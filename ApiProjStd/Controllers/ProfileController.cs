@@ -88,5 +88,36 @@ namespace ApiProjStd.Controllers
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "One or more errors has ocurred."));
             }
         }
+
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0)
+                return BadRequest(new ResultViewModel<Profile>(errors: "Id invalid."));
+
+            try
+            {
+                var deletedProfile = await _profileService.Delete(id);
+
+                if (deletedProfile is not null)
+                    return Ok(new ResultViewModel<dynamic>(
+                        new Profile
+                        {
+                            Id = deletedProfile.Id,
+                            Name = deletedProfile.Name
+                        }));
+
+                return BadRequest(new ResultViewModel<Profile>(errors: "Profile not found."));
+            }
+            catch(DbUpdateException ex)
+            {
+                return StatusCode(500, new ResultViewModel<Profile>(errors: "An database error has ocurred."));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ResultViewModel<Profile>(errors: "An error has ocurred."));
+            }
+        }
     }
 }

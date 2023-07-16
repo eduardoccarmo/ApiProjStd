@@ -40,9 +40,13 @@ namespace Api.Prof.Std.Infra.Repository
             }
         }
 
-        public Task<Profile> Delete(int id)
+        public async Task<Profile> Delete(Profile  profile)
         {
-            throw new NotImplementedException();
+            _context.Profiles.Remove(profile);
+
+            await _context.SaveChangesAsync();
+
+            return profile;
         }
 
         public async Task<List<Profile>> GetAll()
