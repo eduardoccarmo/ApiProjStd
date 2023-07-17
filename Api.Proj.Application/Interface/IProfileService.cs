@@ -18,6 +18,6 @@ namespace Api.Proj.Std.Application.Interface
 
         Task<Profile> Delete(int id);
 
-        Task<Profile> Update(ProfileCreateViewModel newProfile, Profile profile);
+        Task<Profile> Update(ProfileCreateViewModel newProfile, int id);
     }
 }

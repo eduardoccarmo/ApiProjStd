@@ -37,16 +37,16 @@ namespace Api.Proj.Std.Application.Services
 
         public async Task<Profile> Delete(int id)
         {
-           var profile = await _profileRepository.GetById(id);
+            var profile = await _profileRepository.GetById(id);
 
-            if(profile is not null)
+            if (profile is not null)
             {
                 var deletedProfile = await _profileRepository.Delete(profile);
 
                 return deletedProfile;
             }
 
-            return null; 
+            return null;
         }
 
         public async Task<List<Profile>> GetAllAsync()
@@ -74,9 +74,11 @@ namespace Api.Proj.Std.Application.Services
             return null;
         }
 
-        public async Task<Profile> Update(ProfileCreateViewModel newProfile, Profile profile)
+        public async Task<Profile> Update(ProfileCreateViewModel? newProfile, int id)
         {
-            if(newProfile is not null)
+            var profile = await GetAsync(id);
+
+            if (profile is not null)
             {
                 profile.Name = newProfile.Name;
 

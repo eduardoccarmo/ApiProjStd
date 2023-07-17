@@ -62,7 +62,6 @@ namespace Api.Prof.Std.Infra.Repository
         {
             var profile = await _context
                                .Profiles
-                               .AsNoTracking()
                                .FirstOrDefaultAsync(x => x.Id == id);
             return profile;
         }
@@ -81,7 +80,7 @@ namespace Api.Prof.Std.Infra.Repository
 
         public async Task<Profile> Update(Profile profile)
         {
-            _context.Update(profile);
+            _context.Profiles.Update(profile);
             await _context.SaveChangesAsync();
 
             return profile;

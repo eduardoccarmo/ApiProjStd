@@ -33,7 +33,7 @@ namespace ApiProjStd.Controllers
 
                 return BadRequest(new ResultViewModel<Profile>(errors: "Profile not found."));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "An error has ocured."));
             }
@@ -52,7 +52,7 @@ namespace ApiProjStd.Controllers
 
                 return BadRequest(new ResultViewModel<Profile>(errors: "Profile is not found."));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "An erros has ocured."));
             }
@@ -70,20 +70,16 @@ namespace ApiProjStd.Controllers
 
             try
             {
-                var oldProfile = await _profileService.GetAsync(id);
-
-                if (oldProfile is not null)
-                    return NotFound(new ResultViewModel<Profile>(errors: "Profile not found."));
-
-                var updateProfile = _profileService.Update(profile, oldProfile);
+                var updateProfile = await _profileService.Update(profile, id);
 
                 if (updateProfile is not null)
                     return Ok(new ResultViewModel<dynamic>(
                         new Profile
                         {
-                            Id = id,
                             Name = profile.Name
                         }));
+
+                return NotFound(new ResultViewModel<Profile>(errors: "Profile not found."));
             }
             catch (DbUpdateException)
             {
@@ -116,11 +112,11 @@ namespace ApiProjStd.Controllers
 
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "One or more errors has ocurred."));
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
-                return StatusCode(500, new ResultViewModel<Profile>(errors: $"{ex.Message}"));
+                return StatusCode(500, new ResultViewModel<Profile>(errors: "An DataBase errors has ocurred."));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "One or more errors has ocurred."));
             }
@@ -147,11 +143,11 @@ namespace ApiProjStd.Controllers
 
                 return BadRequest(new ResultViewModel<Profile>(errors: "Profile not found."));
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "An database error has ocurred."));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, new ResultViewModel<Profile>(errors: "An error has ocurred."));
             }
