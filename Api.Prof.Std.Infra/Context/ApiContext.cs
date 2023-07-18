@@ -8,7 +8,7 @@ namespace Api.Prof.Std.Infra.Context
 {
     public class ApiContext : DbContext
     {
-        //public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Profile> Profiles { get; set; }
@@ -21,6 +21,7 @@ namespace Api.Prof.Std.Infra.Context
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new ProfileMap());
             modelBuilder.ApplyConfiguration(new ProductMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
 
         }
 
