@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace ApiProjStd.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/Category")]
     [ApiController]
     public class CategoryController : ControllerBase
     {

@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - IoC", "5 - IoC", "{BE926CB7-0C8C-4D27-AA94-0036305C95FB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - UnitTest", "6 - UnitTest", "{47877A89-7CAB-4F63-B610-85FCBA921486}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Proj.Std.Domain", "..\Api.ProjStd.Domain\Api.Proj.Std.Domain.csproj", "{0C34A7C6-37D9-47F5-A5D9-266257416F31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Proj.Std.IoC", "..\Api.ProjStd.IoC\Api.Proj.Std.IoC.csproj", "{B33E1D9A-5F66-4922-BEC8-193B534A7B6D}"

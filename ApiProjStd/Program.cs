@@ -3,8 +3,8 @@ using MySqlConnector;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AplicationServicesRepository();
 builder.Services.AplicationServices();
-
 
 //ApplicationServiceExtensions.AplicationServices(builder.Services);
 

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiProjStd.Controllers
 {
-    [Route("api/Profile")]
+    [Route("v1/Profile")]
     [ApiController]
     public class ProfileController : ControllerBase
     {
