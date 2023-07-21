@@ -40,9 +40,17 @@ namespace Api.Prof.Std.Infra.Repository
             return newUser;
         }
 
-        public Task DeleteUser(int id)
+        public async Task<User> DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            User? deletedUser = await _context
+                                    .Users
+                                    .FirstOrDefaultAsync(x => x.Id == id);
+
+            _context.Remove(deletedUser);
+
+            _context.SaveChangesAsync();
+
+            return deletedUser;
         }
 
         public async Task<List<User>> GetAll()
@@ -76,9 +84,13 @@ namespace Api.Prof.Std.Infra.Repository
             return user;
         }
 
-        public Task UpdateUser(int id)
+        public async Task<User> UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+
+            await _context.SaveChangesAsync();
+
+            return user;
         }
 
         public async Task<int> GetMaxId()
@@ -92,6 +104,5 @@ namespace Api.Prof.Std.Infra.Repository
 
             return id + 1;
         }
-
     }
 }

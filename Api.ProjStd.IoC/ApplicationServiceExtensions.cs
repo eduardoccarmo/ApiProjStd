@@ -29,8 +29,5 @@ namespace Api.Proj.Std.IoC
 
             return services;
         }
-
-
-
     }
 }
