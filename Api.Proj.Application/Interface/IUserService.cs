@@ -1,9 +1,5 @@
 ﻿using Api.Proj.Std.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Api.Proj.Std.Domain.ViewModels;
 
 namespace Api.Proj.Std.Application.Interface
 {
@@ -12,5 +8,7 @@ namespace Api.Proj.Std.Application.Interface
         Task<User> GetByName(string name);
 
         Task<List<User>> GetAll();
+
+        Task<User> AddUser(UserCreatedViewModel newUser);  
     }
 }

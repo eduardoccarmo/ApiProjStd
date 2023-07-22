@@ -21,23 +21,10 @@ namespace Api.Prof.Std.Infra.Repository
 
         public async Task<User> AddUser(User user)
         {
-            int id = await GetMaxId();
-
-            User? newUser = new User
-            {
-                Id = id,
-                Name = user.Name,
-                Surname = user.Surname,
-                NickName = user.NickName,
-                Email = user.Email,
-                Phone = user.Phone,
-                Gender = user.Gender
-            };
-
-            await _context.Users.AddAsync(newUser);
+            await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
 
-            return newUser;
+            return user;
         }
 
         public async Task<User> DeleteUser(int id)

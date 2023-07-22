@@ -1,11 +1,8 @@
 ﻿using Api.Proj.Std.Application.Interface;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Api.Proj.Std.Domain.ViewModels;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Api.Proj.Std.Application.Services
 {
@@ -18,6 +15,34 @@ namespace Api.Proj.Std.Application.Services
             _userRepository = userRepository;
         }
 
+        public async Task<User> AddUser(UserCreatedViewModel newUser)
+        {
+            if (newUser is not null)
+            {
+                int id = await _userRepository.GetMaxId();
+
+                var user = new User
+                {
+                    Id = id,
+                    Name = newUser.Name,
+                    NickName = newUser.NickName,
+                    Surname = newUser.Surname,
+                    Email = newUser.Email,
+                    Phone = newUser.Phone,
+                    Gender = newUser.Gender
+                };
+
+                var createdUser = await _userRepository.AddUser(user);
+
+                if (createdUser != null)
+                    return createdUser;
+
+                return null;
+            }
+
+            return null;
+        }
+
         public async Task<List<User>> GetAll()
         {
             var users = await _userRepository.GetAll();
@@ -26,12 +51,11 @@ namespace Api.Proj.Std.Application.Services
                 return users;
 
             return null;
-
         }
 
-        public async  Task<User> GetByName(string name)
+        public async Task<User> GetByName(string name)
         {
-           var user = await _userRepository.GetByName(name);
+            var user = await _userRepository.GetByName(name);
 
             if (!(user == null))
                 return user;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Api.Proj.Std.Domain.Models.IRepositories
 {
@@ -19,5 +20,7 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
         Task<User> UpdateUser(User user);
 
         Task<User> AddUser(User user);
+
+        Task<int> GetMaxId();
     }
 }
