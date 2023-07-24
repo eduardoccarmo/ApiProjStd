@@ -79,5 +79,28 @@ namespace Api.Proj.Std.Application.Services
 
             return null;
         }
+
+        public async Task<User> UpdateUser(string name, UserCreatedViewModel updatedUser)
+        {
+            var user = await _userRepository.GetByName(name);
+
+            if (user is not null)
+            {
+                User? newUser = new User
+                {
+                    Id = user.Id,
+                    Name = updatedUser.Name,
+                    NickName = updatedUser.NickName,
+                    Surname = updatedUser.Surname,
+                    Email = updatedUser.Email,
+                    Phone = updatedUser.Phone,
+                    Gender = updatedUser.Gender
+                };
+
+                return await _userRepository.UpdateUser(newUser);
+            }
+
+            return null; 
+        }
     }
 }

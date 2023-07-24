@@ -12,5 +12,7 @@ namespace Api.Proj.Std.Application.Interface
         Task<User> AddUser(UserCreatedViewModel newUser);
 
         Task<User> DeleteUser(string name);
+
+        Task<User> UpdateUser(string id, UserCreatedViewModel updatedUser);
     }
 }
