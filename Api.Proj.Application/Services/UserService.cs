@@ -43,6 +43,23 @@ namespace Api.Proj.Std.Application.Services
             return null;
         }
 
+        public async Task<User> DeleteUser(string name)
+        {
+            var deletedUser = await _userRepository.GetByName(name);
+
+            if (deletedUser is not null)
+            {
+                var ret = await _userRepository.DeleteUser(deletedUser);
+
+                if (ret is not null)
+                    return ret;
+
+                return null;
+            }
+
+            return null;
+        }
+
         public async Task<List<User>> GetAll()
         {
             var users = await _userRepository.GetAll();

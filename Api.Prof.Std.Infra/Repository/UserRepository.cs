@@ -27,17 +27,13 @@ namespace Api.Prof.Std.Infra.Repository
             return user;
         }
 
-        public async Task<User> DeleteUser(int id)
+        public async Task<User> DeleteUser(User user)
         {
-            User? deletedUser = await _context
-                                    .Users
-                                    .FirstOrDefaultAsync(x => x.Id == id);
+            _context.Remove(user);
 
-            _context.Remove(deletedUser);
+            await _context.SaveChangesAsync();
 
-            _context.SaveChangesAsync();
-
-            return deletedUser;
+            return user;
         }
 
         public async Task<List<User>> GetAll()

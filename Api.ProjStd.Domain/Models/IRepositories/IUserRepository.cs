@@ -15,7 +15,7 @@ namespace Api.Proj.Std.Domain.Models.IRepositories
 
         Task<List<User>> GetAll();
 
-        Task<User> DeleteUser(int id);
+        Task<User> DeleteUser(User user);
 
         Task<User> UpdateUser(User user);
 

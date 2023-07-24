@@ -9,6 +9,8 @@ namespace Api.Proj.Std.Application.Interface
 
         Task<List<User>> GetAll();
 
-        Task<User> AddUser(UserCreatedViewModel newUser);  
+        Task<User> AddUser(UserCreatedViewModel newUser);
+
+        Task<User> DeleteUser(string name);
     }
 }
