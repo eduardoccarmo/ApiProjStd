@@ -39,9 +39,9 @@ namespace Api.Prof.Std.Infra.Repository
         public async Task<List<User>> GetAll()
         {
             var users = await _context
-                             .Users
-                             .AsNoTracking()
-                             .ToListAsync();
+                              .Users
+                              .AsNoTracking()
+                              .ToListAsync();
 
 
             return users;
