@@ -50,9 +50,9 @@ namespace Api.Prof.Std.Infra.Repository
         public async Task<User> GetByName(string name)
         {
             var user = await _context
-                             .Users
-                             .AsNoTracking()
-                             .FirstOrDefaultAsync(x => x.Name == name);
+                              .Users
+                              .AsNoTracking()
+                              .FirstOrDefaultAsync(x => x.Name == name);
 
             return user;
         }

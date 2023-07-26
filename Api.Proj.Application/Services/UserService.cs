@@ -70,9 +70,9 @@ namespace Api.Proj.Std.Application.Services
             return null;
         }
 
-        public async Task<User> GetByName(string name)
+        public async Task<User> GetAsync(string name)
         {
-            var user = await _userRepository.GetByName(name);
+            var user = await _userRepository.GetByName(name.ToUpper());
 
             if (!(user == null))
                 return user;
@@ -100,7 +100,7 @@ namespace Api.Proj.Std.Application.Services
                 return await _userRepository.UpdateUser(newUser);
             }
 
-            return null; 
+            return null;
         }
     }
 }

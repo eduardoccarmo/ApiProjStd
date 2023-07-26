@@ -5,7 +5,7 @@ namespace Api.Proj.Std.Application.Interface
 {
     public interface IUserService
     {
-        Task<User> GetByName(string name);
+        Task<User> GetAsync(string name);
 
         Task<List<User>> GetAll();
 

@@ -36,5 +36,31 @@ namespace ApiProjStd.Controllers
                 return StatusCode(500, new ResultViewModel<User>(errors: ex.Message));
             }
         }
+
+        [HttpGet]
+        [Route("GetByNameAsync/{name}")]
+        public async Task<IActionResult> GetByNameAsync(string name)
+        {
+            try
+            {
+                if(name is not null)
+                {
+                    var user = await _userService.GetAsync(name);
+
+                    if (user is not null)
+                        return Ok(user);
+
+                    return BadRequest(new ResultViewModel<User>(errors: "User not Found."));
+                }
+                else
+                {
+                    return BadRequest(new ResultViewModel<User>(errors: "The name atribute is invalid."));
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500, new ResultViewModel<User>(errors: "An error has ocurred."));
+            }
+        }
     }
 }
