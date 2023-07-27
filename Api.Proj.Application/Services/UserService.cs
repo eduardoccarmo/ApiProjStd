@@ -3,6 +3,7 @@ using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
 using Api.Proj.Std.Domain.ViewModels;
 using System.Reflection.Metadata.Ecma335;
+using System.Xml.Linq;
 
 namespace Api.Proj.Std.Application.Services
 {
@@ -73,6 +74,16 @@ namespace Api.Proj.Std.Application.Services
         public async Task<User> GetAsync(string name)
         {
             var user = await _userRepository.GetByName(name.ToUpper());
+
+            if (!(user == null))
+                return user;
+
+            return null;
+        }
+
+        public async Task<User> GetByNick(string nickName)
+        {
+            var user = await _userRepository.GetByNickName(nickName.ToUpper());
 
             if (!(user == null))
                 return user;

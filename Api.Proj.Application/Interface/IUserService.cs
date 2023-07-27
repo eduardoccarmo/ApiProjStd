@@ -7,6 +7,8 @@ namespace Api.Proj.Std.Application.Interface
     {
         Task<User> GetAsync(string name);
 
+        Task<User> GetByNick(string nickName);
+
         Task<List<User>> GetAll();
 
         Task<User> AddUser(UserCreatedViewModel newUser);
