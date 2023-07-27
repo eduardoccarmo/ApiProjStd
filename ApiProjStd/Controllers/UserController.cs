@@ -1,4 +1,5 @@
 ﻿using Api.Proj.Std.Application.Interface;
+using Api.Proj.Std.Domain.Extensions;
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,34 @@ namespace ApiProjStd.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync(UserCreatedViewModel user)
+        public async Task<IActionResult> PostAsync(UserCreatedViewModel newUser)
         {
-            return Ok(user); 
+            if (!ModelState.IsValid)
+                return BadRequest(new ResultViewModel<User>(errors: ModelState.GetErrors()));
+
+            try
+            {
+                var user = await _userService.AddUser(newUser);
+
+                if (newUser is not null)
+                    return Ok(new ResultViewModel<dynamic>(
+                        new User
+                        {
+                            Id = user.Id,
+                            Name = newUser.Name,
+                            Surname = newUser.Surname,
+                            NickName = newUser.NickName,
+                            Email = newUser.Email,
+                            Phone = newUser.Phone,
+                            Gender = newUser.Gender
+                        }));
+
+                return BadRequest(new ResultViewModel<User>(errors: "an error occurred while creating the user."));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new ResultViewModel<User>(errors: "An error has ocurred."));
+            }
         }
 
         [HttpGet]
@@ -49,7 +75,7 @@ namespace ApiProjStd.Controllers
         {
             try
             {
-                if(name is not null)
+                if (name is not null)
                 {
                     var user = await _userService.GetAsync(name);
 
@@ -63,7 +89,7 @@ namespace ApiProjStd.Controllers
                     return BadRequest(new ResultViewModel<User>(errors: "The name atribute is invalid."));
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return StatusCode(500, new ResultViewModel<User>(errors: "An error has ocurred."));
             }
