@@ -16,6 +16,12 @@ namespace ApiProjStd.Controllers
             _userService = userService;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PostAsync(UserCreatedViewModel user)
+        {
+            return Ok(user); 
+        }
+
         [HttpGet]
         [Route("GetAllAsync")]
         public async Task<IActionResult> GetAll()
