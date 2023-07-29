@@ -17,6 +17,31 @@ namespace ApiProjStd.Controllers
             _userService = userService;
         }
 
+        [HttpPut]
+        [Route("PutAsync")]
+        public async Task<IActionResult> PutAsync(UserCreatedViewModel updateUser, string name)
+        {
+            try
+            {
+                if (name is not null)
+                    return BadRequest(new ResultViewModel<User>(errors: "Id is invalid."));
+
+                if (!ModelState.IsValid)
+                    return BadRequest(new ResultViewModel<User>(errors: ModelState.GetErrors()));
+
+                var user = await _userService.UpdateUser(name, updateUser);
+
+                if (user != null)
+                    return Ok(user);
+
+                return BadRequest(new ResultViewModel<User>(errors: "User not found."));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new ResultViewModel<User>(errors: "An error has ocurred."));
+            };
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostAsync(UserCreatedViewModel newUser)
         {
