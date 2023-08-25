@@ -18,7 +18,7 @@ namespace ApiProjStd.Controllers
         }
 
         [HttpPut]
-        [Route("PutAsync")]
+        [Route("PutAsync/{name}")]
         public async Task<IActionResult> PutAsync(UserCreatedViewModel updateUser, string name)
         {
             try
@@ -43,6 +43,7 @@ namespace ApiProjStd.Controllers
         }
 
         [HttpPost]
+        [Route("PostAsync")]
         public async Task<IActionResult> PostAsync(UserCreatedViewModel newUser)
         {
             if (!ModelState.IsValid)
@@ -120,30 +121,30 @@ namespace ApiProjStd.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("GetByNameAsync/{name}")]
-        public async Task<IActionResult> GetByNickNameAsync(string nickName)
-        {
-            try
-            {
-                if (nickName is not null)
-                {
-                    var user = await _userService.GetByNick(nickName);
+        //[HttpGet]
+        //[Route("GetByNameAsync/{name}")]
+        //public async Task<IActionResult> GetByNickNameAsync(string nickName)
+        //{
+        //    try
+        //    {
+        //        if (nickName is not null)
+        //        {
+        //            var user = await _userService.GetByNick(nickName);
 
-                    if (user is not null)
-                        return Ok(user);
+        //            if (user is not null)
+        //                return Ok(user);
 
-                    return BadRequest(new ResultViewModel<User>(errors: "User not Found."));
-                }
-                else
-                {
-                    return BadRequest(new ResultViewModel<User>(errors: "The name atribute is invalid."));
-                }
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, new ResultViewModel<User>(errors: "An error has ocurred."));
-            }
-        }
+        //            return BadRequest(new ResultViewModel<User>(errors: "User not Found."));
+        //        }
+        //        else
+        //        {
+        //            return BadRequest(new ResultViewModel<User>(errors: "The name atribute is invalid."));
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(500, new ResultViewModel<User>(errors: "An error has ocurred."));
+        //    }
+        //}
     }
 }

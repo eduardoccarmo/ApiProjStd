@@ -2,7 +2,6 @@
 using Api.Proj.Std.Domain.Models;
 using Api.Proj.Std.Domain.Models.IRepositories;
 using Api.Proj.Std.Domain.ViewModels;
-using Microsoft.Extensions.Logging;
 
 namespace Api.Proj.Std.Application.Services
 {

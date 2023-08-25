@@ -46,7 +46,7 @@ namespace ApiProjStd.Controllers
                 if (category == null)
                     return NotFound(new ResultViewModel<string>(errors: "Category not found."));
 
-                return Ok(category);
+                return Ok(new ResultViewModel<Category>(category));
             }
             catch (DbException msg)
             {
@@ -69,7 +69,7 @@ namespace ApiProjStd.Controllers
                 if (category == null)
                     return NotFound(new ResultViewModel<string>(errors: "Category not found."));
 
-                return Ok(category);
+                return Ok(new ResultViewModel<Category>(category));
             }
             catch (DbException msg)
             {
@@ -83,14 +83,14 @@ namespace ApiProjStd.Controllers
         }
 
         [HttpPost]
-        [Route("PostCategory")]
+        [Route("v1/PostCategory")]
         public async Task<IActionResult> PostCategory(Category category)
         {
             try
             {
                 var newCategory = await _categoryService.AddCategory(category);
 
-                return Ok(new ResultViewModel<dynamic>(
+                return Created("v1/PostCategory", new ResultViewModel<dynamic>(
                     new Category
                     {
                         Id = category.Id,
